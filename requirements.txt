@@ -4,3 +4,7 @@ langchain
 langchain-openai
 langchain-anthropic
 pydantic
+SQLAlchemy
+sqlalchemy
+pwdlib
+python-jose[cryptography]
