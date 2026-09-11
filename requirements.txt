@@ -12,3 +12,4 @@ uvicorn
 psycopg2-binary
 pydantic[email]
 pwdlib[argon2]
+python-multipart
