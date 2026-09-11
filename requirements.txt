@@ -8,3 +8,7 @@ SQLAlchemy
 sqlalchemy
 pwdlib
 python-jose[cryptography]
+uvicorn
+psycopg2-binary
+pydantic[email]
+pwdlib[argon2]

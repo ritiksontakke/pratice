@@ -4,12 +4,15 @@ from sqlalchemy import String
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 from src.db.base import Base
+from sqlalchemy import Integer
+
 
 class User(Base):
 
     __tablename__ = "ritik"
 
     id : Mapped[uuid.UUID] = mapped_column(
+        Integer,
         primary_key=True
     )
 

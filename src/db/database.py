@@ -2,6 +2,7 @@ from sqlalchemy import create_engine
 # from sqlalchemy.pool import NullPool
 from dotenv import load_dotenv
 import os
+from urllib.parse import quote_plus
 
 # Load environment variables from .env
 load_dotenv()
@@ -14,8 +15,11 @@ PORT = os.getenv("port")
 DBNAME = os.getenv("dbname")
 
 # Construct the SQLAlchemy connection string
-DATABASE_URL = f"postgresql+psycopg2://{USER}:{PASSWORD}@{HOST}:{PORT}/{DBNAME}?sslmode=require"
-# Create the SQLAlchemy engine
+DATABASE_URL = (
+    f"postgresql+psycopg2://"
+    f"{USER}:{quote_plus(PASSWORD)}@"
+    f"{HOST}:{PORT}/{DBNAME}?sslmode=require"
+)# Create the SQLAlchemy engine
 engine = create_engine(DATABASE_URL)
 # If using Transaction Pooler or Session Pooler, we want to ensure we disable SQLAlchemy client side pooling -
 # https://docs.sqlalchemy.org/en/20/core/pooling.html#switching-pool-implementations

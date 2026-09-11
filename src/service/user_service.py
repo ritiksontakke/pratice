@@ -34,8 +34,6 @@ class UserService:
             full_name=user_data.full_name,
             email=user_data.email,
             password_hash=hashed_password,
-            role="employee",
-            department=user_data.department,
         )
 
         return self.user_repository.create(user)

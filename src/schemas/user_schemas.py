@@ -20,10 +20,6 @@ class UserSignup(BaseModel):
         max_length=128,
     )
 
-    department: str = Field(
-        min_length=2,
-        max_length=100,
-    )
 
     @model_validator(mode="after")
     def validate_passwords(self):
