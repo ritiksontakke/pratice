@@ -13,3 +13,6 @@ psycopg2-binary
 pydantic[email]
 pwdlib[argon2]
 python-multipart
+langchain-community 
+pypdf
+huggingface_hub
