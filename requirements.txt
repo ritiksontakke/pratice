@@ -16,3 +16,4 @@ python-multipart
 langchain-community 
 pypdf
 huggingface_hub
+qdrant-client
