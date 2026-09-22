@@ -1,2 +1,46 @@
+from src.ingestion.chunker import chunk_documents
+from src.ingestion.embedder import create_embeddings
+from src.ingestion.loader import load_pdf
+from src.ingestion.qdrantStore import store_chunk
 
+def ingestion_pipeline(
+    file_path: str,
+    department: str,
+    uploaded_by: str,
+):
 
+    # 1. Read PDF
+    documents = load_pdf(
+        file_path
+    )
+
+    # 2. Create chunks
+    chunks = chunk_documents(
+        documents
+    )
+
+     # 3. Extract text from Document objects
+    texts = [
+        chunk.page_content
+        for chunk in chunks
+    ]
+
+    # 3. Create embeddings
+    vectors = create_embeddings(
+        texts
+    )
+
+    # 4. Store in Qdrant
+    result = store_chunk(
+        chunks=chunks,
+        vectors=vectors,
+        department=department,
+        uploaded_by=uploaded_by,
+    )
+
+    return {
+        "status": "success",
+        "message": "Document ingested successfully.",
+        "department": department,
+        "chunks": result["chunks_uploaded"],
+    }
